@@ -1,0 +1,49 @@
+* {
+    font-family: 'Consolas';
+    color: white;
+}
+.container {
+    text-align: center;
+    background: black;
+    border-radius: 25px;
+    padding: 50px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 75%;
+    padding: 5%;
+    color: black;
+}
+
+.answer {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: black;
+}
+.btn {
+    margin-top: 5px;
+    padding: 0.5rem;
+    max-width: fit-content;
+    border: none;
+    border-radius: 15px;
+    background: rgb(150, 150, 150);
+    cursor: pointer;
+}
+.btn:hover {
+    filter: brightness(0.8);
+}
+.btn:active {
+    transform: scale(0.9);
+}
