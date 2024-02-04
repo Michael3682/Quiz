@@ -65,5 +65,8 @@ function checkAnswer() {
         currentQuestion++
         console.log(currentQuestion)
     }
+    if (currentQuestion === quizData.length) {
+        currentQuestion = 0
+    }
     questionElement.innerHTML = quizData[currentQuestion].question
 }
