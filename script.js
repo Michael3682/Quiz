@@ -1,44 +1,33 @@
-const quizContainer = document.getElementById('content') 
+const quizContainer = document.getElementById('content')
 const questionElement = document.createElement('div')
 const inputAnswer = document.createElement('input')
 const button = document.createElement('button')
-
-const quizData = [
-    {
-        question: '10 + 10',
-        answer: 20
-    },
-    {
-        question: '20 + 20',
-        answer: 40
-    },
-    {
-        question: '30 + 30',
-        answer: 60
-    },
-    {
-        question: '40 + 40',
-        answer: 80
-    },
-    {
-        question: '50 + 50',
-        answer: 100
-    },
-    {
-        question: '60 + 60',
-        answer: 120
-    },
-    {
-        question: '70 + 70',
-        answer: 140
-    },
-]         
+const correctAns = document.getElementById('correctAns')
+const wrongAns = document.getElementById('wrongAns')
+const mode = document.getElementById('mode')
+const content = document.body
+document.getElementById('mode').hidden = true
 
 let currentQuestion = 0
+let corrects = 0
+let wrongs = 0
 
-function StartQuiz () {
+const quizData = [
+    {question: 'Question 1', answer: 1},
+    {question: 'Question 2', answer: 2},
+    {question: 'Question 3', answer: 3},
+    {question: 'Question 4', answer: 4},
+    {question: 'Question 5', answer: 5},
+    {question: 'Question 6', answer: 6},
+    {question: 'Question 7', answer: 7},
+]
+
+quizData.sort(() => 0.5 - Math.random())
+
+function StartQuiz() {
     document.getElementById('startButton').hidden = true
-    
+    document.getElementById('mode').hidden = false
+
     questionElement.className = 'question'
     questionElement.innerHTML = quizData[currentQuestion].question
     inputAnswer.className = 'answer'
@@ -46,27 +35,39 @@ function StartQuiz () {
     inputAnswer.type = 'text'
     inputAnswer.required = true
     button.innerText = 'Submit'
-    button.className = 'btn'
+    button.className = 'btn2'
     button.addEventListener('click', checkAnswer)
-    
-    
+
+
     quizContainer.appendChild(questionElement)
     quizContainer.appendChild(inputAnswer)
     quizContainer.appendChild(button)
 
-    if (currentQuestion === quizData.length) {
-        currentQuestion = 0
-    }
+    console.log(quizData.length)
+    correctAns.innerHTML = `Correct Answers: ${corrects}`
+    wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
 }
 function checkAnswer() {
     let inputtedAnswer = document.getElementById('answer').value
 
     if (inputtedAnswer == quizData[currentQuestion].answer) {
         currentQuestion++
+        corrects++
         console.log(currentQuestion)
     }
-    if (currentQuestion === quizData.length) {
-        currentQuestion = 0
+    else {
+        wrongs++
     }
+    // if (currentQuestion === quizData.length) {
+    //     currentQuestion = 0
+    // }
+    correctAns.innerHTML = `Correct Answers: ${corrects}`
+    wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
     questionElement.innerHTML = quizData[currentQuestion].question
 }
+
+mode.addEventListener('click', () => {
+    content.classList.toggle('switchMode')
+    button.classList.toggle('switchMode2')
+    mode.classList.toggle('mode2')
+})
