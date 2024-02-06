@@ -22,8 +22,6 @@ const quizData = [
     {question: 'Question 7', answer: 7},
 ]
 
-quizData.sort(() => 0.5 - Math.random())
-
 function StartQuiz() {
     document.getElementById('startButton').hidden = true
     document.getElementById('mode').hidden = false
@@ -38,12 +36,10 @@ function StartQuiz() {
     button.className = 'btn2'
     button.addEventListener('click', checkAnswer)
 
-
     quizContainer.appendChild(questionElement)
     quizContainer.appendChild(inputAnswer)
     quizContainer.appendChild(button)
-
-    console.log(quizData.length)
+    
     correctAns.innerHTML = `Correct Answers: ${corrects}`
     wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
 }
@@ -58,9 +54,9 @@ function checkAnswer() {
     else {
         wrongs++
     }
-    // if (currentQuestion === quizData.length) {
-    //     currentQuestion = 0
-    // }
+    if (currentQuestion === quizData.length) {
+        currentQuestion = 0
+     }
     correctAns.innerHTML = `Correct Answers: ${corrects}`
     wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
     questionElement.innerHTML = quizData[currentQuestion].question
