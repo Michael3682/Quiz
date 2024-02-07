@@ -49,7 +49,6 @@ function checkAnswer() {
     if (inputtedAnswer == quizData[currentQuestion].answer) {
         currentQuestion++
         corrects++
-        console.log(currentQuestion)
     }
     else {
         wrongs++
