@@ -90,13 +90,9 @@
 .switchMode2:active {
     transform: scale(0.9);
 }
-.title {
-    display: inline-block;
-}
 .text {
-    letter-spacing: 10px;
     border-right: 5px solid;
-    width: 35.5%;
+    width: 22rem;
     white-space: nowrap;
     overflow: hidden;
     animation: typing 2s steps(16);
@@ -147,4 +143,24 @@
 .switchMode {
     background: black;
     color: white;
+}
+
+@media only screen and (max-width: 320px) {
+    .text {
+        width: 16.5rem;
+        font-size: 30px;
+        transition: all 0.5s;
+    }
+    .cA {
+        font-size: 20px;
+        transition: all 0.5s;
+    }
+    .wA {
+        font-size: 20px;
+        transition: all 0.5s;
+    }
+    .container2 {
+        gap: 70px;
+        transition: all 0.5s;
+    }
 }
