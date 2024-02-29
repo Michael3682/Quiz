@@ -1,6 +1,9 @@
 * {
     font-family: 'Consolas';
 }
+body {
+    transition: all .7s;
+}
 .container {
     text-align: center;
     border-radius: 25px;
@@ -95,7 +98,7 @@
     width: 22rem;
     white-space: nowrap;
     overflow: hidden;
-    animation: typing 2s steps(16);
+    animation: typing 1.5s steps(16);
 }
 @keyframes typing {
     from {
@@ -121,6 +124,7 @@
     left: 10px;
     top: 3px;
     position: absolute;
+    transition: all 0.3s;
 }
 .mode2 {
     margin-top: 2.5rem;
@@ -138,11 +142,14 @@
     width: 2.5rem;
     background: white;
     border-radius: 50px;
+    left: 0;
+    top: 0;
     position: absolute;
 }
 .switchMode {
     background: black;
     color: white;
+    transition: all .7s;
 }
 
 @media only screen and (max-width: 320px) {

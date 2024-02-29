@@ -1,18 +1,18 @@
-const quizContainer = document.getElementById('content')
-const questionElement = document.createElement('div')
-const inputAnswer = document.createElement('input')
+const content = document.getElementById('content')
+const questions = document.createElement('div')
+const input = document.createElement('input')
 const button = document.createElement('button')
 const correctAns = document.getElementById('correctAns')
 const wrongAns = document.getElementById('wrongAns')
+
 const mode = document.getElementById('mode')
-const content = document.body
 document.getElementById('mode').hidden = true
 
 let currentQuestion = 0
 let corrects = 0
 let wrongs = 0
 
-const quizData = [
+const Datas = [
     {question: 'Question 1', answer: 1},
     {question: 'Question 2', answer: 2},
     {question: 'Question 3', answer: 3},
@@ -26,43 +26,43 @@ function StartQuiz() {
     document.getElementById('startButton').hidden = true
     document.getElementById('mode').hidden = false
 
-    questionElement.className = 'question'
-    questionElement.innerHTML = quizData[currentQuestion].question
-    inputAnswer.className = 'answer'
-    inputAnswer.id = 'answer'
-    inputAnswer.type = 'text'
-    inputAnswer.required = true
+    questions.innerText = Datas[currentQuestion].question
+    input.className = 'answer'
+    input.id = 'answer'
+    input.type = 'text'
     button.innerText = 'Submit'
     button.className = 'btn2'
     button.addEventListener('click', checkAnswer)
 
-    quizContainer.appendChild(questionElement)
-    quizContainer.appendChild(inputAnswer)
-    quizContainer.appendChild(button)
+    content.appendChild(questions)
+    content.appendChild(input)
+    content.appendChild(button)
     
-    correctAns.innerHTML = `Correct Answers: ${corrects}`
-    wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
+    correctAns.innerText = `Correct Answers: ${corrects}`
+    wrongAns.innerText = `Wrong Answers : ${wrongs}`
 }
-function checkAnswer() {
-    let inputtedAnswer = document.getElementById('answer').value
 
-    if (inputtedAnswer == quizData[currentQuestion].answer) {
+function checkAnswer() {
+    let answer = document.getElementById('answer').value
+
+    if (answer == Datas[currentQuestion].answer) {
         currentQuestion++
         corrects++
     }
     else {
         wrongs++
     }
-    if (currentQuestion === quizData.length) {
+    if (currentQuestion === Datas.length) {
         currentQuestion = 0
      }
-    correctAns.innerHTML = `Correct Answers: ${corrects}`
-    wrongAns.innerHTML = `Wrong Answers: ${wrongs}`
-    questionElement.innerHTML = quizData[currentQuestion].question
+
+    correctAns.innerText = `Correct Answers: ${corrects}`
+    wrongAns.innerText = `Wrong Answers: ${wrongs}`
+    questions.innerText = Datas[currentQuestion].question
 }
 
 mode.addEventListener('click', () => {
-    content.classList.toggle('switchMode')
+    document.body.classList.toggle('switchMode')
     button.classList.toggle('switchMode2')
     mode.classList.toggle('mode2')
 })
